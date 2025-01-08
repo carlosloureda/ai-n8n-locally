@@ -1,3 +1,5 @@
+version: '3'
+
 services:
   n8n:
     image: n8nio/n8n:latest
@@ -9,18 +11,10 @@ services:
       - N8N_BASIC_AUTH_ACTIVE=true
       - N8N_BASIC_AUTH_USER=tu_usuario
       - N8N_BASIC_AUTH_PASSWORD=tu_contraseña
-      - N8N_HOST=n8n
+      - N8N_HOST=localhost
       - N8N_PORT=5678
       - N8N_PROTOCOL=http
-      - WEBHOOK_URL=https://n8n.lokicueventures.com
     restart: unless-stopped
 
-  cloudflared:
-    image: cloudflare/cloudflared:latest
-    command: tunnel --no-autoupdate run n8n-tunnel
-    volumes:
-      - ./cloudflared:/etc/cloudflared
-    restart: unless-stopped
-
-volumes:
+volumes: # Aquí se define correctamente como un mapa
   n8n_data:

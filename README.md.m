@@ -3,11 +3,18 @@ This file (docker-compose.yaml) configures an n8n container that will run on por
 Instructions are for MacOS.
 
 ## How to run
+
 ```
 docker-compose up -d
 ```
 
 You should see your n8n instance running on port 5678 (http://localhost:5678).
+
+If you want to have the customized domain:
+
+0. Check the manual to have a customized port in cloudfare to expose ur lcoal computer
+1. add the n9n-tunnet.json file inside ./cloudflared folder
+2. adjust ./cloudflared/config.yaml to have ur domain 
 
 ## How to maintain n8n up to date
 
@@ -16,7 +23,7 @@ docker-compose pull
 docker-compose up -d
 ```
 
-## How to expose local to internet
+## How to expose local to internet (if you want to do it manually)
 
 We can use a lot of alternatives like: ngrok, localtunnel, cloudfare tunnel, expose, pagekite, telebit, tailscale, frp (fast reverse proxy) ...
 
